@@ -52,18 +52,21 @@ class MainActivity2 : ComponentActivity() {
 @Composable
 fun BasicOperations(name: String, modifier: Modifier = Modifier) {
     val  context = LocalContext.current
-
+    var switchValue by remember { mutableStateOf(false) }
     Column {
         Spacer(modifier = Modifier.padding(50.dp))
-        Button( onClick = {
-            val newInt = Intent(Intent.ACTION_VIEW)
-            newInt.setData(Uri.parse("geo:0,0?q=Farmingdale State College, NY"))
-            context.startActivity(newInt)
-        },
-            modifier= Modifier.padding(start = 40.dp, end = 40.dp)) {
-            Icon( imageVector = Icons.Default.LocationOn, contentDescription = "Location")
-            Text("Show me  Farmingdale",Modifier.padding( start = 10.dp))
-        }
+            Button(
+                onClick = {
+                    val newInt = Intent(Intent.ACTION_VIEW)
+                    newInt.setData(Uri.parse("geo:0,0?q=Farmingdale State College, NY"))
+                    context.startActivity(newInt)
+                },
+                modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchValue
+            ) {
+                    Icon(imageVector = Icons.Default.LocationOn, contentDescription = "Location")
+                    Text("Show me  Farmingdale", Modifier.padding(start = 10.dp))
+            }
+
         HorizontalDivider(thickness = DividerDefaults.Thickness)
 
         Button( onClick = {
@@ -72,7 +75,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
             newInt.setData(Uri.parse("tel:+5160000000"))
             context.startActivity(newInt)
         },
-            modifier= Modifier.padding(start = 40.dp, end = 40.dp)) {
+            modifier= Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchValue) {
             Icon( imageVector = Icons.Default.Phone, contentDescription = "Phone")
             Text("Call Me",Modifier.padding( start = 10.dp))
         }
@@ -83,7 +86,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
             // ToDo 2: create explicit intent to open a new activity
             context.startActivity(Intent(context, MainActivity2::class.java))
         },
-            modifier= Modifier.padding(start = 40.dp, end = 40.dp)) {
+            modifier= Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchValue) {
             Icon( imageVector = Icons.Default.Info, contentDescription = "Phone")
             Text("Go To activity 2",Modifier.padding( start = 10.dp))
         }
@@ -94,7 +97,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
         HorizontalDivider(thickness = DividerDefaults.Thickness)
 
         // ToDo 5: This switch is not working fix it
-        var switchValue by remember { mutableStateOf(false) }
+
         Switch(
 
             checked = switchValue,
