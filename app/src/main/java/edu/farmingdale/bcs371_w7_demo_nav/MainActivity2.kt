@@ -94,9 +94,11 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
         HorizontalDivider(thickness = DividerDefaults.Thickness)
 
         // ToDo 5: This switch is not working fix it
+        var switchValue by remember { mutableStateOf(false) }
         Switch(
-            checked = true,
-            onCheckedChange = {  },
+
+            checked = switchValue,
+            onCheckedChange = {switchValue = it },
             modifier = Modifier.padding(10.dp),
         )
         // ToDo 6: when the switch is off, disable the buttons
