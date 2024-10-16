@@ -50,19 +50,15 @@ fun gpaappFun(navController: NavController) {
             if (btnLabel == "Compute GPA") {
 
                 val gpaVal = calGPA(grade1, grade2, grade3)
-                if (gpaVal != null) {
-                    gpa = gpaVal.toString()
+                gpa = gpaVal.toString()
 
-                    // Change background color based on GPA
-                    backColor = when {
-                        gpaVal < 60 -> Color.Red
-                        gpaVal in 60.0..79.0 -> Color.Yellow
-                        else -> Color.Green
-                    }
-                    btnLabel = "Clear"
-                } else {
-                    gpa = "Invalid input"
+                // Change background color based on GPA
+                backColor = when {
+                    gpaVal < 60 -> Color.Red
+                    gpaVal in 60.0..79.0 -> Color.Yellow
+                    else -> Color.Green
                 }
+                btnLabel = "Clear"
             } else {
                 // Reset all value to none
                 grade1 = ""
