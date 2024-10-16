@@ -1,5 +1,6 @@
 package edu.farmingdale.bcs371_w7_demo_nav
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.Role.Companion.RadioButton
 import androidx.compose.ui.text.input.KeyboardType
@@ -35,7 +37,7 @@ import kotlin.math.ceil
 
 // ToDo 9: make this composable navigatable and then add a button to navigate to the GPA calculator
 @Composable
-fun PizzaPartyScreen( modifier: Modifier = Modifier) {
+fun PizzaPartyScreen(navController: NavController,modifier: Modifier = Modifier) {
     var totalPizzas by remember { mutableIntStateOf(0) }
     var numPeopleInput by remember { mutableStateOf("") }
     var hungerLevel by remember { mutableStateOf("Medium") }
@@ -75,7 +77,13 @@ fun PizzaPartyScreen( modifier: Modifier = Modifier) {
         ) {
             Text("Calculate")
         }
-
+        Button(
+            onClick = {  navController.navigate("gpaAppFun")
+            },
+            modifier = modifier.fillMaxWidth()
+        ) {
+            Text("To GPA")
+        }
     }
 }
 

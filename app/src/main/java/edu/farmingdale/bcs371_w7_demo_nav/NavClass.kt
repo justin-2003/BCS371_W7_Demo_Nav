@@ -67,7 +67,7 @@ fun Navigation() {
             PizzaPartyScreen(navController)
         }
 
-        composable("gpa_app_Fun") {
+        composable("gpaappFun") {
             gpaappFun(navController)
         }
     }
