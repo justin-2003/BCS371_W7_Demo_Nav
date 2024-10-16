@@ -77,7 +77,9 @@ fun Navigation() {
 @Composable
 fun FirstScreen(navController: NavController) {
     Box (contentAlignment = Alignment.Center){
-        Column ( modifier = Modifier.padding(horizontal = 20.dp).wrapContentSize(),
+        Column ( modifier = Modifier
+            .padding(horizontal = 20.dp)
+            .wrapContentSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally){
             Text(text = "First Screen")
@@ -106,7 +108,7 @@ fun SecondScreen(navController: NavController) {
 
         Text (fontSize = 20.sp, text = "Second Screen")
 
-        Button(onClick = { context.startActivity(Intent(context, MainActivity2::class.java)) }) {
+        Button(onClick = { navController.navigate("PizzaPartyFun") }) {
             Text(fontSize = 20.sp, text ="Go to other Activity")
         }
 

@@ -10,7 +10,7 @@ import androidx.navigation.NavController
 
 // ToDo 10: make this composable navigable and then add a button to navigate to a suitable screen
 @Composable
-fun gpaappFun() {
+fun gpaappFun(navController: NavController) {
 
     var grade1 by remember { mutableStateOf("") }
     var grade2 by remember { mutableStateOf("") }
@@ -81,7 +81,9 @@ fun gpaappFun() {
             Text(text = "GPA: $gpa")
         }
 
-
+       Button(onClick = { navController.navigate("first_screen")}) {
+           Text("Go to PizzaPartyFun")
+       }
     }
 }
 
